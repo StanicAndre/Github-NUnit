@@ -23,7 +23,7 @@ jobs:
       # - name: Install dependencies
       #   run: dotnet restore -s /NUnitTestProject.csproj
       - name: Build with dotnet
-        run: dotnet build --source ${{ github.workspace }}/NUnitTestProject
+        run: dotnet build --source ${{ github.workspace }}/NUnitTestProject/NUnitTestProject.sln
       
       - name: Test with dotnet
         run: dotnet test --logger trx --results-directory "TestResults-${{ matrix.dotnet-version }}"
