@@ -16,6 +16,10 @@ jobs:
         uses: actions/setup-dotnet@v3
         with:
           dotnet-version: ${{ matrix.dotnet-version }}
+
+      - name: Display structure of working directory
+        run: ls -R
+        working-directory: ${{ github.workspace }}
       - name: Install dependencies
         run: dotnet restore -s ${{ github.workspace }}/NUnitTestProject/NUnitTestProject.sln
       - name: Test with dotnet
