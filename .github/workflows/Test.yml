@@ -20,12 +20,9 @@ jobs:
       - name: Display structure of working directory
         run: ls -R
         working-directory: ${{ github.workspace }}
-      # - name: Install dependencies
-      #   run: dotnet restore -s /NUnitTestProject.csproj
-      - name: Build with dotnet
-        run: dotnet build --source ${{ github.workspace }}/NUnitTestProject
-      - name: Test with dotnet
-        run: dotnet test --logger trx --results-directory "TestResults-${{ matrix.dotnet-version }}"
+      - name: restore/build/test
+        run: |
+         ./powershell/nunit.ps1
       - name: Upload dotnet test results
         uses: actions/upload-artifact@v3
         with:
