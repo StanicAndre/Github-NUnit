@@ -24,7 +24,7 @@ jobs:
         working-directory: ${{ github.workspace }}
       - name: restore/build/test
         run: |
-          dotnet restore
+          dotnet restore ./NUnitTestProject/NUnitTestProject.csproj
           dotnet build
           dotnet test
       - name: Upload dotnet test results
