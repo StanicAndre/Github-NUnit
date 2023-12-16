@@ -10,22 +10,21 @@ jobs:
     #   matrix:
     #     dotnet-version: [ '8.0.x', '6.0.x' ]
     env:
-     DOTNET_INSTALL_DIR: "${{ github.workspace }}/NUnitTestProject/NUnitTestProject"
+     DOTNET_INSTALL_DIR: "${{ github.workspace }}/NUnitTestProject"
 
     steps:
       - uses: actions/checkout@v4
       - name: Setup dotnet
         uses: actions/setup-dotnet@v3
         with:
-          dotnet-version: "8.0.x"
+          dotnet-version: "6.0.x"
 
       - name: Display structure of working directory
         run: ls -R
         working-directory: ${{ github.workspace }}
+        
       - name: restore/build/test
         run: |
-          dotnet restore 
-          dotnet build
           dotnet test
       - name: Upload dotnet test results
         uses: actions/upload-artifact@v3
