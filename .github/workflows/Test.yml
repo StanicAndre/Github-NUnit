@@ -22,7 +22,7 @@ jobs:
         working-directory: ${{ github.workspace }}
       - name: restore/build/test
         run: |
-         ./powershell/nunit.ps1
+         ./powershell/nunit.ps1 -repo_path ${{ github_workspace }}
       - name: Upload dotnet test results
         uses: actions/upload-artifact@v3
         with:
