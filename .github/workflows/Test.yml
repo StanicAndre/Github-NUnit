@@ -20,8 +20,8 @@ jobs:
       - name: Display structure of working directory
         run: ls -R
         working-directory: ${{ github.workspace }}
-      - name: Install dependencies
-        run: dotnet restore -s ${{ github.workspace }}/NUnitTestProject/NUnitTestProject/NUnitTestProject.csproj
+      # - name: Install dependencies
+      #   run: dotnet restore -s ${{ github.workspace }}/NUnitTestProject/NUnitTestProject/NUnitTestProject.csproj
       - name: Test with dotnet
         run: dotnet test --logger trx --results-directory "TestResults-${{ matrix.dotnet-version }}"
       - name: Upload dotnet test results
