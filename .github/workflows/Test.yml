@@ -37,7 +37,7 @@ jobs:
         if: always()
         with:
           name: DotNET Tests
-          path: "${{ github.workspace }}/NUnitTestProject/TestResults/*.trx"                            
+          path: '${{ github.workspace }}\NUnitTestProject\TestResults\*.trx'                            
           reporter: dotnet-trx
           fail-on-error: true
         
