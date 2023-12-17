@@ -28,7 +28,7 @@ jobs:
         run: |
           dotnet restore
           dotnet build
-          dotnet test --logger trx --results-directory "TestResults" || true
+          dotnet test --logger "trx;LogFileName=test-results.trx" --results-directory "TestResults"  || true
         working-directory: "${{ github.workspace }}/NUnitTestProject"
       
 
@@ -37,7 +37,7 @@ jobs:
         if: always()
         with:
           name: DotNET Tests
-          path: '${{ github.workspace }}\NUnitTestProject\TestResults\*.trx'                            
+          path: '${{ github.workspace }}\NUnitTestProject\TestResults\test-results.trx'                            
           reporter: dotnet-trx
           fail-on-error: true
         
@@ -45,6 +45,6 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: dotnet-results
-          path: "${{ github.workspace }}/NUnitTestProject/TestResults/*.trx"
+          path: "${{ github.workspace }}/NUnitTestProject/TestResults/test-results.trx"
           # Use always() to always run this step to publish test results when there are test failures
         if: ${{ always() }}
