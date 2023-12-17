@@ -1,7 +1,10 @@
 name: dotnet package
 
 on: [push]
-
+permissions:
+  contents: read
+  actions: read
+  checks: write
 jobs:
   build:
 
