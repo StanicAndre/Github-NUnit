@@ -37,7 +37,7 @@ jobs:
         if: always()
         with:
           name: DotNET Tests
-          path: "${{ github.workspace }}/TestResults/*.trx"                            
+          path: "${{ github.workspace }}/NUnitTestProject/TestResults/*.trx"                            
           reporter: dotnet-trx
           fail-on-error: true
         
@@ -45,6 +45,6 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: dotnet-results
-          path: "${{ github.workspace }}/TestResults"
+          path: "${{ github.workspace }}/NUnitTestProject/TestResults/*.trx"
           # Use always() to always run this step to publish test results when there are test failures
         if: ${{ always() }}
