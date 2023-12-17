@@ -50,7 +50,7 @@ namespace NUnitTestProject
         public void Test_3()
         {
             Console.WriteLine("Inside TestMethod Test_3");
-            Assert.That(test3, Is.EqualTo("Test1"));
+            Assert.That(test3, Is.EqualTo("Test3"));
 
         }
     }
