@@ -30,14 +30,17 @@ jobs:
           dotnet build
           dotnet test --logger "trx;LogFileName=test-results.trx" --results-directory "TestResults"  || true
         working-directory: "${{ github.workspace }}/NUnitTestProject"
-      
+
+      - name: Display structure of working directory
+        run: ls -R
+        working-directory: ${{ github.workspace }}
 
       - name: Test Report
         uses: dorny/test-reporter@v1
         if: always()
         with:
           name: DotNET Tests
-          path: '${{ github.workspace }}\NUnitTestProject\TestResults\test-results.trx'                            
+          path: '${{ github.workspace }}/NUnitTestProject/TestResults/test-results.trx'                            
           reporter: dotnet-trx
           fail-on-error: true
         
