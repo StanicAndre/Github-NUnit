@@ -28,8 +28,18 @@ jobs:
         run: |
           dotnet restore
           dotnet build
-          dotnet test --logger trx --results-directory "TestResults"
+          dotnet test --logger trx --results-directory "TestResults" || true
         working-directory: "${{ github.workspace }}/NUnitTestProject"
+      
+
+      - name: Test Report
+        uses: dorny/test-reporter@v1
+        if: always()
+        with:
+          name: DotNET Tests
+          path: "${{ github.workspace }}/TestResults/*.trx"                            
+          reporter: dotnet-trx
+          fail-on-error: true
         
       - name: Upload dotnet test results
         uses: actions/upload-artifact@v3
