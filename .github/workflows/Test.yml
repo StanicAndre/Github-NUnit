@@ -27,6 +27,8 @@ jobs:
         shell: pwsh
         run: |
           dotnet test
+        working-directory: "${{ github.workspace }}/NUnitTestProject"
+        
       - name: Upload dotnet test results
         uses: actions/upload-artifact@v3
         with:
